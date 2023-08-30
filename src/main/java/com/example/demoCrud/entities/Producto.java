@@ -1,6 +1,5 @@
 package com.example.demoCrud.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -13,30 +12,16 @@ public class Producto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+    @Column(name = "titulo")
     private String titulo;
+    @Column(name="imagen")
     private String imagen;
+    @Column(name = "nombre")
     private String nombre;
-    private int precio;
-
-    @ManyToOne
-    @JsonIgnoreProperties("productos")
-    @JoinColumn(name = "categoryId")
-    private Category category;
+    @Column(name = "precio")
+    private Integer precio;
+    @Column(name = "descripcion")
     private String descripcion;
-
-
-    public Producto() {
-    }
-
-    public Producto(String titulo, String imagen, String nombre, int precio, Category category, String descripcion) {
-        this.titulo = titulo;
-        this.imagen = imagen;
-        this.nombre = nombre;
-        this.precio = precio;
-        this.category = category;
-        this.descripcion = descripcion;
-    }
-    
-
 }

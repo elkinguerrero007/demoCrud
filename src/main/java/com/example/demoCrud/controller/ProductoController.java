@@ -26,12 +26,13 @@ public class ProductoController {
 
     @GetMapping("/getById/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Optional<Producto> getById(@PathVariable Integer id){
+    public Optional<Producto> getById(@PathVariable int id){
         return service.getById(id);
   }
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Producto save(@RequestBody Producto producto){
+    public Producto save(@RequestBody Producto producto){   
+
         return service.save(producto);
     }
 
@@ -46,7 +47,6 @@ public class ProductoController {
             update.setImagen(producto.getImagen());
             update.setNombre(producto.getNombre());
             update.setPrecio(producto.getPrecio());
-	    update.setCategory(producto.getCategory());
             update.setDescripcion(producto.getDescripcion());
 
             return Optional.ofNullable(service.save(update));
